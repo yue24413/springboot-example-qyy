@@ -10,10 +10,9 @@ import java.awt.print.Pageable;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends CrudRepository {
+public interface UserRepository extends CrudRepository <User, String>{
     @Query("""
-select a.* from user u,address a
-where u.id=a.user_id and u.id=:uid
+select a.* from user u,address a where u.id=a.user_id and u.id=:uid
 """)
     List<Address> findAddressById(String uid);
 
