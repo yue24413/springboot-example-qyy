@@ -6,15 +6,15 @@ import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.awt.print.Pageable;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends CrudRepository <User, String>{
+public interface UserRepository extends CrudRepository<User, String> {
     @Query("""
 select a.* from user u,address a where u.id=a.user_id and u.id=:uid
 """)
-    List<Address> findAddressById(String uid);
+    List<Address> findAddressesById(String uid);
 
     @Query("""
 select * from user u limit :offset, :pageSize
@@ -28,11 +28,8 @@ List<User> findAll(Pageable pageable);
 
 @Query("""
 select * from user u order by u.id desc
-limit :#{#pageable.offset}, :#{#pageablle.pageSize}
+limit :#{#pageable.offset}, :#{#pageable.pageSize}
 """)
     List<User> findByIdDesc(Pageable pageable);
-
-
-
 
 }
