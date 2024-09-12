@@ -18,12 +18,9 @@ public class Address {
     @Id
     @CreatedBy
     private String id;
-    private String datail;
+    private String detail;
     private String userId;
     @ReadOnlyProperty
     private LocalDateTime createTime;
-    @ReadOnlyProperty
     private LocalDateTime updateTime;
-
-
 }

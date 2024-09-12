@@ -1,6 +1,5 @@
 package com.example.jdbcexamples.dox;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,10 +17,9 @@ import java.time.LocalDateTime;
 public class User {
     @Id
     @CreatedBy
-    private int id;
+    private String id;
     private String name;
     @ReadOnlyProperty
     private LocalDateTime createTime;
-    @ReadOnlyProperty
     private LocalDateTime updateTime;
 }
