@@ -22,5 +22,6 @@ public class Address {
     private String userId;
     @ReadOnlyProperty
     private LocalDateTime createTime;
+    @ReadOnlyProperty
     private LocalDateTime updateTime;
 }

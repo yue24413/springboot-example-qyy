@@ -21,5 +21,6 @@ public class User {
     private String name;
     @ReadOnlyProperty
     private LocalDateTime createTime;
+    @ReadOnlyProperty
     private LocalDateTime updateTime;
 }
