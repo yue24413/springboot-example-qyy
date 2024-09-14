@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 
 @SpringBootTest
 @Slf4j
@@ -18,7 +20,7 @@ private UserRepository userRepository;
     @Test
     void save() {
         var user = User.builder()
-                .name("SUN")
+                .name("Yue")
                 .build();
         userRepository.save(user);
     }
@@ -29,4 +31,22 @@ private UserRepository userRepository;
         userRepository.findById("1283957448725852160")
                 .ifPresent(user -> log.debug("user: {}", user));
     }
+
+
+    @Test
+    void findByname() {
+        userRepository.findByname("SUN").getId();
+    }
+
+    @Test
+    void findAll() {
+        int offset = 1;
+        int pageSize = 10;
+        List<User> users = userRepository.findAll(offset, pageSize);
+        for (User user : users) {
+            log.debug("user: {}", user);
+        }
+
+    }
+
 }
