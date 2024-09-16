@@ -40,13 +40,10 @@ private UserRepository userRepository;
 
     @Test
     void findAll() {
-        int offset = 1;
-        int pageSize = 10;
-        List<User> users = userRepository.findAll(offset, pageSize);
-        for (User user : users) {
-            log.debug("user: {}", user);
+        int pageSize = 5;
+        int page = 4;
+        userRepository.findAll((page-1) * pageSize, pageSize)
+                .forEach(user -> log.debug("user: {}", user));
         }
-
-    }
 
 }

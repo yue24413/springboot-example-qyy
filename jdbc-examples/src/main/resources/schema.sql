@@ -16,3 +16,6 @@ create table if not exists `address`
 
     index (user_id)
 );
+
+explain
+select * from user where id=1284460380660002816;
