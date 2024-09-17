@@ -56,4 +56,23 @@ private UserRepository userRepository;
         userRepository.findAll_2(pageable)
                 .forEach(user -> log.debug("user:{}",user));
     }
+
+    @Test
+    void findAllByIdDesc() {
+        int pageSize = 5;
+        int page = 1;
+        Pageable pageable = PageRequest.of(page-1,pageSize);
+        userRepository.findAllByIdDesc(pageable)
+                .forEach(user -> log.debug("user:{}",user));
+
+    }
+
+    @Test
+    void findAddressUser() {
+
+    }
+
+    @Test
+    void findAddressUserByUid() {
+    }
 }

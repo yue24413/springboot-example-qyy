@@ -26,4 +26,10 @@ class AddressRepositoryTest {
         var address = Address.builder().userId("1283957448725852160").detail("666").build();
         addressRepository.save(address);
     }
+
+    @Test
+    void findAddressUserById() {
+        addressRepository.findAddressUserById("1284461669104054272").forEach(address -> log.debug("detail:{}",address.getDetail().toString()));
+    }
 }
+
