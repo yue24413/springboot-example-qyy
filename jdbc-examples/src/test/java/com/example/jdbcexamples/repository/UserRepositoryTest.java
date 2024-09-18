@@ -1,32 +1,40 @@
 package com.example.jdbcexamples.repository;
 
+import com.example.jdbcexamples.dox.Address;
 import com.example.jdbcexamples.dox.User;
+import com.example.jdbcexamples.dto.AddressUser;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import java.util.List;
+import org.springframework.data.jdbc.repository.query.Modifying;
 
 
 @SpringBootTest
 @Slf4j
 class UserRepositoryTest {
 
-@Autowired
-private UserRepository userRepository;
-
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private AddressRepository addressRepository;
 
     @Test
     void save() {
         var user = User.builder()
-                .name("Yue")
+                .id("1284460380660002816")
+                .name("yue")
                 .build();
         userRepository.save(user);
     }
 
-
+    @Test
+    void delete() {
+        var user = userRepository.findById("1284460380660002816").get();
+        userRepository.delete(user);
+    }
     @Test
     void findById() {
         userRepository.findById("1283957448725852160")
@@ -69,10 +77,11 @@ private UserRepository userRepository;
 
     @Test
     void findAddressUser() {
+        for (AddressUser addressUser : userRepository.findAddressUser("1283957448725852160")) {
+            log.debug("addressUser: {}", addressUser);
+        }
+        }
 
-    }
 
-    @Test
-    void findAddressUserByUid() {
-    }
 }
+
