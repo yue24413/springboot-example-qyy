@@ -3,6 +3,7 @@ package com.example.jdbcexamples.repository;
 import com.example.jdbcexamples.dox.Address;
 import com.example.jdbcexamples.dox.User;
 import com.example.jdbcexamples.dto.AddressUser;
+import com.example.jdbcexamples.dto.UserAddress3;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,5 +85,10 @@ class UserRepositoryTest {
         }
 
 
+    @Test
+    void findUserAddress3() {
+       UserAddress3 u =  userRepository.findUserAddress3("1283957448725852160");
+        log.debug("u: {}", u);
+    }
 }
 

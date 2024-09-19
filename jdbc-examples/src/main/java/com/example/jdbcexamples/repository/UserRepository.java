@@ -4,6 +4,7 @@ import com.example.jdbcexamples.dox.User;
 import com.example.jdbcexamples.dto.AddressUser;
 import com.example.jdbcexamples.dto.UserAddress;
 import com.example.jdbcexamples.dto.UserAddress3;
+import com.example.jdbcexamples.mapper.UserAddress3ResultSetExtractor;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -44,4 +45,10 @@ public interface UserRepository extends CrudRepository<User, String> {
         where u.id = :uid
        """)
   List<AddressUser> findAddressUser(String uid);
+
+  @Query(
+          value = "select * from user u join address a on u.id = a.user_id where u.id = :uid",
+          resultSetExtractorClass = UserAddress3ResultSetExtractor.class
+  )
+  UserAddress3 findUserAddress3(String uid);
 }
