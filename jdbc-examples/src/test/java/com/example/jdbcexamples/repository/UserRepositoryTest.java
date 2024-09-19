@@ -23,6 +23,7 @@ class UserRepositoryTest {
 
     @Test
     void save() {
+        /*builder和new的区别；原子性*/
         var user = User.builder()
                 .id("1284460380660002816")
                 .name("yue")

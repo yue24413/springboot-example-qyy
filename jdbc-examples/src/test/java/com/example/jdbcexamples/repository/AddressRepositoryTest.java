@@ -1,12 +1,11 @@
 package com.example.jdbcexamples.repository;
 
 import com.example.jdbcexamples.dox.Address;
+import com.example.jdbcexamples.dto.AddressUser2;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Slf4j
@@ -31,5 +30,13 @@ class AddressRepositoryTest {
     void findAddressUserById() {
         addressRepository.findAddressUserById("1284461669104054272").forEach(address -> log.debug("detail:{}",address.getDetail().toString()));
     }
+
+//    @Test
+//    void findAddressUser2ById() {
+//        AddressUser2 addressUser2 = addressRepository.findAddressUser2ById("1284461863585542144");
+//        log.debug("addressUser2.getUser(): {}",addressUser2.getUser());
+//        log.debug("addressUser2.getAddress(): {}",addressUser2.getAddress());
+//
+//    }
 }
 
