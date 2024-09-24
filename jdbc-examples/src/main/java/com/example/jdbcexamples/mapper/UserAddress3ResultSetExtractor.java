@@ -1,6 +1,7 @@
 package com.example.jdbcexamples.mapper;
 
 import com.example.jdbcexamples.dox.Address;
+import com.example.jdbcexamples.dox.User;
 import com.example.jdbcexamples.dto.UserAddress3;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -23,6 +24,7 @@ public class UserAddress3ResultSetExtractor implements ResultSetExtractor<UserAd
             builder.name(rs.getString("name"));
             builder.createTime(rs.getObject("u.create_time", LocalDateTime.class));
             builder.updateTime(rs.getObject("u.update_time", LocalDateTime.class));
+
             Address address = Address.builder()
                 .id(rs.getString("id"))
                 .detail(rs.getString("detail"))
