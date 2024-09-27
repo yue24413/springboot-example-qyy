@@ -1,16 +1,13 @@
 package com.example.jdbcexamples.repository;
 
-import com.example.jdbcexamples.dox.Address;
 import com.example.jdbcexamples.dox.User;
-import com.example.jdbcexamples.dto.AddressUser;
-import com.example.jdbcexamples.dto.UserAddress3;
+import com.example.jdbcexamples.dto.UserAddressDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jdbc.repository.query.Modifying;
 
 
 @SpringBootTest
@@ -78,17 +75,9 @@ class UserRepositoryTest {
     }
 
     @Test
-    void findAddressUser() {
-        for (AddressUser addressUser : userRepository.findAddressUser("1283957448725852160")) {
-            log.debug("addressUser: {}", addressUser);
-        }
-        }
-
-
-    @Test
-    void findUserAddress3() {
-       UserAddress3 u =  userRepository.findUserAddress3("1283957448725852160");
-        log.debug("u: {}", u);
+    void findUserAddressResultSetExtractorById() {
+        UserAddressDTO userAddressDTO = userRepository.findUserAddressResultSetExtractorById("1283957448725852160");
+        log.debug("userAddressDTO: {}", userAddressDTO);
     }
 }
 

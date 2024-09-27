@@ -1,11 +1,10 @@
 package com.example.jdbcexamples.repository;
 
 import com.example.jdbcexamples.dox.User;
-import com.example.jdbcexamples.dto.AddressUser;
-import com.example.jdbcexamples.dto.UserAddress;
-import com.example.jdbcexamples.dto.UserAddress3;
-import com.example.jdbcexamples.mapper.UserAddress3ResultSetExtractor;
-import org.springframework.data.jdbc.repository.query.Modifying;
+import com.example.jdbcexamples.dto.AddressUserDTO;
+
+import com.example.jdbcexamples.dto.UserAddressDTO;
+import com.example.jdbcexamples.mapper.UserAddressResultSetExtractor;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -38,17 +37,9 @@ public interface UserRepository extends CrudRepository<User, String> {
         """)
   List<User> findAllByIdDesc(Pageable pageable);
 
-  // 显式声明映射名称对应DTO中属性名称，避免冲突
-  @Query("""
-       select a.id as id,a.user_id as user_id,detail,name,a.create_time as create_time,a.update_time as update_time
-        from user u join address a on u.id = user_id
-        where u.id = :uid
-       """)
-  List<AddressUser> findAddressUser(String uid);
+  @Query(value = "select * from address a join user u on u.id = a.user_id where u.id =:uid",
+          /*指定了一个行映射器类AddressUser2RowMapper，它的任务是从数据库查询的结果集中创建Java对象。*/
+          resultSetExtractorClass = UserAddressResultSetExtractor.class)
+  UserAddressDTO findUserAddressResultSetExtractorById(String uid);
 
-  @Query(
-          value = "select * from user u join address a on u.id = a.user_id where u.id = :uid",
-          resultSetExtractorClass = UserAddress3ResultSetExtractor.class
-  )
-  UserAddress3 findUserAddress3(String uid);
 }
