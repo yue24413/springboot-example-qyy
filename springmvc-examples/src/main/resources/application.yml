@@ -1,0 +1,14 @@
+spring:
+  jackson:
+    default-property-inclusion: non_null
+logging:
+  level:
+    sql: debug
+    com:
+      example: debug
+  pattern:
+    console: '%-5level %C.%M[%line] - %msg%n'
+
+    #1.先将模块结构整理好
+    #2.写配置文件，日志+Jackson
+    #3.创建新类型,在exception异常下，枚举类型，设置通用业务码。

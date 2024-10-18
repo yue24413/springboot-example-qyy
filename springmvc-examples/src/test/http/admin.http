@@ -1,0 +1,7 @@
+#GET http://localhost:8080/api/admin/users
+
+###
+GET localhost:8080/api/admin/users/1001
+
+###
+GET  localhost:8080/api/admin/users/100
