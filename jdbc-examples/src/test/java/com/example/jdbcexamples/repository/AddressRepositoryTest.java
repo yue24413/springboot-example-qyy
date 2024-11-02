@@ -2,14 +2,18 @@ package com.example.jdbcexamples.repository;
 
 import com.example.jdbcexamples.dox.Address;
 import com.example.jdbcexamples.dto.AddressUserDTO;
+import com.example.jdbcexamples.dto.UserAddressDTO2;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 @Slf4j
-class AddressRepositoryTest {
+class
+AddressRepositoryTest {
 
     @Autowired
     private UserRepository userRepository;

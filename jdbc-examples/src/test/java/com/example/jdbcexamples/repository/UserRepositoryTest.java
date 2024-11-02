@@ -2,12 +2,15 @@ package com.example.jdbcexamples.repository;
 
 import com.example.jdbcexamples.dox.User;
 import com.example.jdbcexamples.dto.UserAddressDTO;
+import com.example.jdbcexamples.dto.UserAddressDTO2;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 
 @SpringBootTest
@@ -23,17 +26,16 @@ class UserRepositoryTest {
     void save() {
         /*builder和new的区别；原子性*/
         var user = User.builder()
-                .id("1284460380660002816")
-                .name("yue")
+                //指定id则update
+//                .id("1297746535215697920")
+                .name("yueyueyue")
                 .build();
         userRepository.save(user);
     }
 
-    @Test
-    void delete() {
-        var user = userRepository.findById("1284460380660002816").get();
-        userRepository.delete(user);
-    }
+
+//
+
     @Test
     void findById() {
         userRepository.findById("1283957448725852160")
@@ -78,6 +80,14 @@ class UserRepositoryTest {
     void findUserAddressResultSetExtractorById() {
         UserAddressDTO userAddressDTO = userRepository.findUserAddressResultSetExtractorById("1283957448725852160");
         log.debug("userAddressDTO: {}", userAddressDTO);
+    }
+
+    @Test
+    void findUserAddressLenResultSetExtractor() {
+        List<UserAddressDTO2> userAddressDTOs = userRepository.findUserAddressLenResultSetExtractor();
+        for (UserAddressDTO2 dto : userAddressDTOs) {
+            log.debug("userAddressDTO: {}", dto);
+        }
     }
 }
 

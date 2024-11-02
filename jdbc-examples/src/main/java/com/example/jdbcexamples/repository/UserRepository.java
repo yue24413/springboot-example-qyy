@@ -4,6 +4,7 @@ import com.example.jdbcexamples.dox.User;
 import com.example.jdbcexamples.dto.AddressUserDTO;
 
 import com.example.jdbcexamples.dto.UserAddressDTO;
+import com.example.jdbcexamples.dto.UserAddressDTO2;
 import com.example.jdbcexamples.mapper.UserAddressResultSetExtractor;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -42,4 +43,14 @@ public interface UserRepository extends CrudRepository<User, String> {
           resultSetExtractorClass = UserAddressResultSetExtractor.class)
   UserAddressDTO findUserAddressResultSetExtractorById(String uid);
 
+
+  //得到姓名和地址个数，按个数由大到小排序
+
+  @Query("""
+            select u.name ,COUNT(a.detail) AS address_count 
+            from user u left join  address a  on u.id = a.user_id 
+            group by u.name 
+            order by address_count ASC
+        """)
+  List<UserAddressDTO2> findUserAddressLenResultSetExtractor();
 }

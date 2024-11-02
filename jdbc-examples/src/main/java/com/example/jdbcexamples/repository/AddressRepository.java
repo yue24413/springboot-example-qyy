@@ -2,6 +2,7 @@ package com.example.jdbcexamples.repository;
 
 import com.example.jdbcexamples.dox.Address;
 import com.example.jdbcexamples.dto.AddressUserDTO;
+import com.example.jdbcexamples.dto.UserAddressDTO2;
 import com.example.jdbcexamples.mapper.AddressUserRowMapper;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -13,6 +14,7 @@ import java.util.List;
 public interface AddressRepository extends CrudRepository<Address, String> {
 
     Address save(Address address);
+
     @Query("""
             select * from address a
             where a.user_id =:userId  
