@@ -1,5 +1,6 @@
-package com.example.springmvcexamples.exception;
+package com.example.backendexamples.exception;
 
+import com.example.backendexamples.exception.Code;
 import lombok.*;
 
 /*非受检异常*/

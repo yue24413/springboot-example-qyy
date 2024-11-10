@@ -1,11 +1,10 @@
-package com.example.springmvcexamples.controller;
+package com.example.backendexamples.controller;
 
-import com.example.springmvcexamples.component.JWTComponent;
-import com.example.springmvcexamples.component.PasswordEncoderConfig;
-import com.example.springmvcexamples.service.UserService;
-import com.example.springmvcexamples.dox.User;
-import com.example.springmvcexamples.exception.Code;
-import com.example.springmvcexamples.vo.ResultVO;
+import com.example.backendexamples.component.JWTComponent;
+import com.example.backendexamples.dox.User;
+import com.example.backendexamples.exception.Code;
+import com.example.backendexamples.service.UserService;
+import com.example.backendexamples.vo.ResultVO;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.http.HttpResponse;
 import java.util.Map;
 
 @Slf4j
@@ -29,8 +27,7 @@ public class LoginController {
     private JWTComponent jwtComponent;
     @PostMapping("login")
     public ResultVO login(@RequestBody User user, HttpServletResponse response) {
-//        User userR = userService.getUserByAccount(user.getAccount(),user.getPassword());
-        User userR = userService.getUserByAccount(user.getAccount());
+        User userR = userService.getUser(user.getAccount());
         if (userR == null || !passwordEnder.matches(user.getPassword(), userR.getPassword()) ) {
             return  ResultVO.error(Code.LOGIN_ERROR);
         }
