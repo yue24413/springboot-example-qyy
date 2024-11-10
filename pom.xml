@@ -11,6 +11,8 @@
     <modules>
         <module>jdbc-examples</module>
         <module>springmvc-examples</module>
+        <module>backend-examples</module>
+        <module>redis-examples</module>
     </modules>
 
 </project>

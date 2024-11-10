@@ -1,0 +1,12 @@
+POST localhost:8080/api/admin/users
+Content-Type: application/json
+#token:
+
+{
+  "name": "Bo",
+  "account": "1001",
+  "role": "Uim5"
+}
+###
+PUT localhost:8080/api/admin/user/{{account}}/password
+#token:

@@ -1,0 +1,24 @@
+POST localhost:8080/api/login
+Content-Type: application/json
+
+{
+  "account": "admin",
+  "password": "admin"
+}
+
+###
+POST localhost:8080/api/login
+Content-Type: application/json
+
+{
+  "account": "admin",
+  "password": "admin"
+}
+###
+POST localhost:8080/api/login
+Content-Type: application/json
+
+{
+  "account": "1001",
+  "password": "1001"
+}
