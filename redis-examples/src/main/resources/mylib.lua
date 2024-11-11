@@ -1,4 +1,4 @@
--- 声明函数：expieAPI_{序号};某一列keys，另一列args，参数放在了列里
+-- 声明函数：expieAPI_{序号},限流函数;某一列keys，另一列args，参数放在了列里
 local function expireAPI_58(keys,args)
     local key = keys[1] -- 索引从1开始
     local expire = args[1] --过期时间

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/admin")
 @RequiredArgsConstructor
 public class AdminController {
-
     private final UserService userService;
     @PostMapping("users")
     public ResultVO postUser(@RequestBody User user) {

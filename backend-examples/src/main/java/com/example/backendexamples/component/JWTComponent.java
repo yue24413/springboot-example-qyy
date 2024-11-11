@@ -25,7 +25,6 @@ public class JWTComponent {
     @Value("${my.secretkey}")
     private  String secretkey;
     private Algorithm algorithm ;
-
     /*组件创建完了之后，(属性初始化完了之后)，在可用状态之前(构造函数创建完了之后），
     *再完成这个属性的初始化。一般是属性先初始化，再构造函数
     * */
