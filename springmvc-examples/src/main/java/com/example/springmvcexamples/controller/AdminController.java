@@ -1,11 +1,13 @@
 package com.example.springmvcexamples.controller;
 
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import com.example.springmvcexamples.service.UserService;
 import com.example.springmvcexamples.vo.ResultVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -22,6 +24,4 @@ public class AdminController {
     public ResultVO getUser(@PathVariable String account) {
         return ResultVO.success(userService.getUserByAccount(account));
     }
-
-
 }

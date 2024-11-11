@@ -1,6 +1,5 @@
 package com.example.springmvcexamples.component;
 
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
@@ -47,9 +46,8 @@ public class JWTComponent {
     public DecodedJWT decode(String token) {
         try {
             return JWT.require(algorithm).build().verify(token);
-        } catch (TokenExpiredException | SignatureVerificationException e) {//token过期与签名校验失败(被篡改等
-            // )
-            if (e instanceof SignatureVerificationException) {
+        }catch (TokenExpiredException | SignatureVerificationException e) {
+            if(e instanceof SignatureVerificationException) {
                 throw XException.builder().code(Code.FORBIDDEN).build();
             }
             throw XException.builder().code(Code.TOKEN_EXPIRED).build();

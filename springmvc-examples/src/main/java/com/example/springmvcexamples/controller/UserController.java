@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/apo/user/")
+@RequestMapping("/api/user/")
 public class UserController {
     @GetMapping("info")
      public ResultVO getinfo(@RequestAttribute("uid") String uid) {

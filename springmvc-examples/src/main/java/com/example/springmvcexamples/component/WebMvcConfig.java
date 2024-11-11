@@ -13,16 +13,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfig implements WebMvcConfigurer {
     /*注入login组件和Admin组件*/
     private final LoginInterceptor loginInterceptor;
-    private final AdminInterCeptor adminInterCeptor;
+    private final AdminInterCeptor adminInterceptor;
 
     /*添加拦截器方法*/
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        /*通过注册器注册*/
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/api/**")
                 .excludePathPatterns("/api/login");
-        registry.addInterceptor(adminInterCeptor)
-                .addPathPatterns("/admin/**");
+        registry.addInterceptor(adminInterceptor)
+                .addPathPatterns("/api/admin/**");
     }
 }
