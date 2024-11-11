@@ -1,6 +1,6 @@
 PATCH localhost:8080/api/user/password
-#token:
-#role:Uim5
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIxMzA1NTA4NjkyNDg0MzI5NDcyIiwicm9sZSI6IlVpbTUiLCJpYXQiOjE3MzEzMjgwNDgsImV4cCI6MTczMTQxNDQ0OH0.6kSslmd0uYyekK5LtXvMfIRf1KAmWTimx6wIlosdQns
+role:Uim5
 Content-Type: application/json
 
 {

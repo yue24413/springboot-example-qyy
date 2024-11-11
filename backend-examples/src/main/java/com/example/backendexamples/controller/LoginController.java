@@ -24,16 +24,16 @@ public class LoginController {
     //需要userservice进行校验
     private final UserService userService;
     private final PasswordEncoder passwordEnder;
-    private JWTComponent jwtComponent;
+    private final JWTComponent jwtComponent;
     @PostMapping("login")
     public ResultVO login(@RequestBody User user, HttpServletResponse response) {
         User userR = userService.getUser(user.getAccount());
         if (userR == null || !passwordEnder.matches(user.getPassword(), userR.getPassword()) ) {
             return  ResultVO.error(Code.LOGIN_ERROR);
         }
-        String token = jwtComponent.encode(Map.of("uid",userR.getId(),"role",user.getRole()));
+        String token = jwtComponent.encode(Map.of("uid",userR.getId(),"role",userR.getRole()));
         response.setHeader("token", token);
-        response.setHeader("role", user.getRole());
+        response.setHeader("role", userR.getRole());
         return  ResultVO.success(userR);
 
     }

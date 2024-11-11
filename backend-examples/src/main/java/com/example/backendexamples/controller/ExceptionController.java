@@ -5,10 +5,10 @@ import com.example.backendexamples.exception.XException;
 import com.example.backendexamples.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Slf4j
-@RestController
+@RestControllerAdvice
 public class ExceptionController    {
     /*处理自定义异常，一旦捕获到XException类异常，会把异常类型的对象当作方法参数注入*/
     @ExceptionHandler(XException.class)

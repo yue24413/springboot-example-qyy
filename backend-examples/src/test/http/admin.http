@@ -1,12 +1,15 @@
 POST localhost:8080/api/admin/users
 Content-Type: application/json
-#token:
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIxMzA1NTA2NDM5MTI4MDU5OTA0Iiwicm9sZSI6Im83dEIiLCJpYXQiOjE3MzEzMjc3NDgsImV4cCI6MTczMTQxNDE0OH0.HN3mSaRSUEUiqdzcSxZPOCw6Zbm0Ksaiphr5jqceTQk
+
 
 {
   "name": "Bo",
   "account": "1001",
   "role": "Uim5"
 }
+
 ###
 PUT localhost:8080/api/admin/user/{{account}}/password
-#token:
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIxMzA1NTA2NDM5MTI4MDU5OTA0Iiwicm9sZSI6Im83dEIiLCJpYXQiOjE3MzEzMjc3NDgsImV4cCI6MTczMTQxNDE0OH0.HN3mSaRSUEUiqdzcSxZPOCw6Zbm0Ksaiphr5jqceTQk
+
